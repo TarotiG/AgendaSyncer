@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="CalDAV\" />
+      <Folder Include="Calendars\Apple\" />
+      <Folder Include="Calendars\Google\" />
+      <Folder Include="Interfaces\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="DotNetEnv" Version="3.2.0" />
+      <PackageReference Include="Google.Apis.Auth" Version="1.74.0" />
+      <PackageReference Include="Google.Apis.Calendar.v3" Version="1.74.0.4073" />
+      <PackageReference Include="Ical.Net" Version="5.2.2" />
+    </ItemGroup>
+
+</Project>
