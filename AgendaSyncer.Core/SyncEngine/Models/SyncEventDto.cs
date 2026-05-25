@@ -4,6 +4,9 @@ using Ical.Net.DataTypes;
 
 namespace AgendaSyncer.Core.SyncEngine.Models;
 
+/// <summary>
+/// Record om events te maken naar een calendar
+/// </summary>
 public record SyncEventDto
 {
      public string id { get; init; }
