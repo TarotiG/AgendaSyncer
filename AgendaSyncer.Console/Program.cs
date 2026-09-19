@@ -5,7 +5,7 @@
 
 try
 {
-    Log.Information("Starting Syncer");
+    Log.Information("Starting Syncer!");
     
     SyncEngine.ConnectToCalendars();
     
