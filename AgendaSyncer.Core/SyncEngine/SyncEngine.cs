@@ -1,4 +1,6 @@
+using AgendaSyncer.Core.Services;
 using AgendaSyncer.Core.SyncEngine.Models;
+using Google.Apis.Http;
 
 namespace AgendaSyncer.Core.SyncEngine;
 
@@ -6,8 +8,14 @@ namespace AgendaSyncer.Core.SyncEngine;
 /// Retrieves data from either a Google calendar or an Apple calendar and syncs the data to the other calendar
 /// if data doesn't match with the opposing calendar.
 /// </summary>
-public static class SyncEngine
+public class SyncEngine
 {
+    public static void ConnectToCalendars()
+    {
+        SyncEngineService syncEngineService = new();
+        syncEngineService.MapGoogleEvents();
+    }
+    
     public static void SyncCalendars()
     {
     }

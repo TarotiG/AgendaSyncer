@@ -1,3 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .CreateLogger();
 
-Console.WriteLine("Hello, World!");
+try
+{
+    Log.Information("Starting Syncer");
+    
+    SyncEngine.ConnectToCalendars();
+    
+}
+catch (SyncEngineApplicationException ex)
+{
+    throw new SyncEngineApplicationException("Application terminated unexpectedly", ex);
+}
+finally
+{
+    Log.Information("Closing Syncer");
+    Log.CloseAndFlush();
+}

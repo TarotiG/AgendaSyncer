@@ -579,6 +579,38 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "Serilog/4.4.1-dev-02447": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Serilog.targets": {}
+        }
+      },
+      "Serilog.Sinks.Console/6.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "4.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Diagnostics.EventLog/10.0.4": {
         "type": "package",
         "compile": {
@@ -1473,6 +1505,58 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Serilog/4.4.1-dev-02447": {
+      "sha512": "STlr1uMeRcm3Z3jDMn/iOQZnH3Fk+inwPUCcxk2Ocd4ulNER4PWB0yU8qkK9CncHgzpt3nq0W8N/RQyGfMyFUg==",
+      "type": "package",
+      "path": "serilog/4.4.1-dev-02447",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Serilog.targets",
+        "buildTransitive/Serilog.targets",
+        "icon.png",
+        "lib/net10.0/Serilog.dll",
+        "lib/net10.0/Serilog.xml",
+        "lib/net462/Serilog.dll",
+        "lib/net462/Serilog.xml",
+        "lib/net471/Serilog.dll",
+        "lib/net471/Serilog.xml",
+        "lib/net6.0/Serilog.dll",
+        "lib/net6.0/Serilog.xml",
+        "lib/net8.0/Serilog.dll",
+        "lib/net8.0/Serilog.xml",
+        "lib/net9.0/Serilog.dll",
+        "lib/net9.0/Serilog.xml",
+        "lib/netstandard2.0/Serilog.dll",
+        "lib/netstandard2.0/Serilog.xml",
+        "serilog.4.4.1-dev-02447.nupkg.sha512",
+        "serilog.nuspec"
+      ]
+    },
+    "Serilog.Sinks.Console/6.1.1": {
+      "sha512": "8jbqgjUyZlfCuSTaJk6lOca465OndqOz3KZP6Cryt/IqZYybyBu7GP0fE/AXBzrrQB3EBmQntBFAvMVz1COvAA==",
+      "type": "package",
+      "path": "serilog.sinks.console/6.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net462/Serilog.Sinks.Console.dll",
+        "lib/net462/Serilog.Sinks.Console.xml",
+        "lib/net471/Serilog.Sinks.Console.dll",
+        "lib/net471/Serilog.Sinks.Console.xml",
+        "lib/net6.0/Serilog.Sinks.Console.dll",
+        "lib/net6.0/Serilog.Sinks.Console.xml",
+        "lib/net8.0/Serilog.Sinks.Console.dll",
+        "lib/net8.0/Serilog.Sinks.Console.xml",
+        "lib/netstandard2.0/Serilog.Sinks.Console.dll",
+        "lib/netstandard2.0/Serilog.Sinks.Console.xml",
+        "serilog.sinks.console.6.1.1.nupkg.sha512",
+        "serilog.sinks.console.nuspec"
+      ]
+    },
     "System.Diagnostics.EventLog/10.0.4": {
       "sha512": "xXo5NcIPeMUMfpo9Efl/3Rgomjb/Jfa3Aa0BgSfqYctN4YpwjPzvIrnD9JTwoKqe3pFtLF9vmtMl892+wwZ6EA==",
       "type": "package",
@@ -1514,7 +1598,9 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Microsoft.Extensions.Hosting >= 10.0.4"
+      "Microsoft.Extensions.Hosting >= 10.0.4",
+      "Serilog >= 4.4.1-dev-02447",
+      "Serilog.Sinks.Console >= 6.1.1"
     ]
   },
   "packageFolders": {
@@ -1564,6 +1650,14 @@
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
             "version": "[10.0.4, )"
+          },
+          "Serilog": {
+            "target": "Package",
+            "version": "[4.4.1-dev-02447, )"
+          },
+          "Serilog.Sinks.Console": {
+            "target": "Package",
+            "version": "[6.1.1, )"
           }
         },
         "imports": [

@@ -1,0 +1,16 @@
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/bin/Debug/net10.0/AgendaSyncer.Core.deps.json
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/bin/Debug/net10.0/AgendaSyncer.Core.dll
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/bin/Debug/net10.0/AgendaSyncer.Core.pdb
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/bin/Debug/net10.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/bin/Debug/net10.0/Microsoft.Extensions.Logging.Abstractions.xml
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.csproj.AssemblyReference.cache
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.AssemblyInfoInputs.cache
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.AssemblyInfo.cs
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.csproj.CoreCompileInputs.cache
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.sourcelink.json
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSy.C9F640FD.Up2Date
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.dll
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/refint/AgendaSyncer.Core.dll
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/AgendaSyncer.Core.pdb
+/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Core/obj/Debug/net10.0/ref/AgendaSyncer.Core.dll

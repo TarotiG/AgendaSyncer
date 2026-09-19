@@ -6,4 +6,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AgendaSyncer.Core\AgendaSyncer.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="4.4.1-dev-02447" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+    </ItemGroup>
+
 </Project>

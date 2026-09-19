@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iALjUp2of6c=",
+  "dgSpecHash": "TH3bKvUox6k=",
   "success": true,
   "projectFilePath": "/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.SyncWorker/AgendaSyncer.SyncWorker.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,8 @@
     "/home/tyronlsg/.nuget/packages/microsoft.extensions.options/10.0.4/microsoft.extensions.options.10.0.4.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/microsoft.extensions.options.configurationextensions/10.0.4/microsoft.extensions.options.configurationextensions.10.0.4.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/microsoft.extensions.primitives/10.0.4/microsoft.extensions.primitives.10.0.4.nupkg.sha512",
+    "/home/tyronlsg/.nuget/packages/serilog/4.4.1-dev-02447/serilog.4.4.1-dev-02447.nupkg.sha512",
+    "/home/tyronlsg/.nuget/packages/serilog.sinks.console/6.1.1/serilog.sinks.console.6.1.1.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/system.diagnostics.eventlog/10.0.4/system.diagnostics.eventlog.10.0.4.nupkg.sha512"
   ],
   "logs": []

@@ -1,2 +1,78 @@
-*.sln
-.idea
+# Build output
+bin/
+obj/
+out/
+artifacts/
+TestResults/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# .NET generated files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Environment / local config
+.env
+.env.*
+*.local
+appsettings.Local.json
+appsettings.Development.local.json
+agendasync-474013-865aff3f972f.json
+
+# Secrets / credentials
+credentials.json
+*.credentials.json
+secrets.json
+service-account*.json
+client_secret*.json
+
+# Editor swap / temp files
+*.swp
+*.swo
+*.tmp
+*.temp
+*~
+.*.kate-swp
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Coverage
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+lcov.info
+
+# Packages / caches
+.nuget/
+packages/

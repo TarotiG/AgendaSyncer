@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgendaSyncer.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58bf899f8eabb42736efa0dd24b88431a188e0c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgendaSyncer.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgendaSyncer.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
