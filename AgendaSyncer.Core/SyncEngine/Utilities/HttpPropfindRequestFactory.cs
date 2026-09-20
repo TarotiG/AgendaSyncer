@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AgendaSyncer.Core.SyncEngine.Utilities;
@@ -27,7 +26,7 @@ public class HttpPropfindRequest : HttpRequestMessage
                              """;
     
     
-    public HttpPropfindRequest(string url) : base(Propfind, url)
+    internal HttpPropfindRequest(string url) : base(Propfind, url)
     {
         Content = new StringContent(_payload, Encoding.UTF8, "application/xml");
     }

@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="SyncEngine\Clients\AppleClient\" />
       <Folder Include="SyncEngine\Enums\Apple\" />
       <Folder Include="SyncEngine\Models\CalDAV\" />
       <Folder Include="SyncEngine\Models\Calendars\" />

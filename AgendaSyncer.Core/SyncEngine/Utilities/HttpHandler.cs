@@ -3,25 +3,23 @@ using System.Net.Http;
 
 namespace AgendaSyncer.Core.SyncEngine.Utilities;
 
-public class HttpHandler
+public static class HttpHandler
 {
-    HttpClient _httpClient;
-    
-    public void CreateHttpClient()
-    {
-        _httpClient = new HttpClient();
-    }
-
-    private async Task<string> SendPropFindRequest(string url)
+    public static async Task<string> SendPropFindRequest(HttpClient httpClient, string url)
     {
         HttpPropfindRequest request = HttpPropfindRequestFactory.Create(url);
-        HttpResponseMessage response = await _httpClient.SendAsync(request);
+        HttpResponseMessage response = await httpClient.SendAsync(request);
         response.EnsureSuccessStatusCode();
         
         return await response.Content.ReadAsStringAsync();
     }
 
-    private void SendReportRequest()
+    public static async Task<string> SendReportRequest(HttpClient httpClient, string url)
     {
+        HttpReportRequest request = HttpReportRequestFactory.Create(url);
+        HttpResponseMessage response = await httpClient.SendAsync(request);
+        response.EnsureSuccessStatusCode();
+        
+        return await response.Content.ReadAsStringAsync();
     }
 }
