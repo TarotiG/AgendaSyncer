@@ -13,8 +13,9 @@ public class SyncEngine
     public static void ConnectToCalendars()
     {
         SyncEngineService syncEngineService = new();
-        List<SyncEventDto> syncEvents = syncEngineService.MapGoogleEvents();
+        // List<SyncEventDto> syncEvents = syncEngineService.MapGoogleEvents();
         
+        syncEngineService.CreateConnectionToApple();
     }
     
     public static void SyncCalendars()

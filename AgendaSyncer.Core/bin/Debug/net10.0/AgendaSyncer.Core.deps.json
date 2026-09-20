@@ -11,7 +11,7 @@
           "DotNetEnv": "3.2.0",
           "Google.Apis.Auth": "1.74.0",
           "Google.Apis.Calendar.v3": "1.74.0.4073",
-          "Ical.Net": "5.2.2",
+          "Ical.Net": "5.2.3",
           "Serilog": "4.4.1-dev-02447",
           "Serilog.Sinks.Console": "6.1.1",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0.0"
@@ -80,14 +80,14 @@
           }
         }
       },
-      "Ical.Net/5.2.2": {
+      "Ical.Net/5.2.3": {
         "dependencies": {
           "NodaTime": "3.2.2"
         },
         "runtime": {
           "lib/net8.0/Ical.Net.dll": {
             "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.2.2.0"
+            "fileVersion": "5.2.3.0"
           }
         }
       },
@@ -242,12 +242,12 @@
       "path": "google.apis.core/1.74.0",
       "hashPath": "google.apis.core.1.74.0.nupkg.sha512"
     },
-    "Ical.Net/5.2.2": {
+    "Ical.Net/5.2.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UkVwHSOiIwMD7s/GaCsgdxxKAwi5uG+kWmfMJcyB9PotZkXzH4Q3KDMyO1cU9OQH7/p3cvlpdObIxtAl9Zx2tg==",
-      "path": "ical.net/5.2.2",
-      "hashPath": "ical.net.5.2.2.nupkg.sha512"
+      "sha512": "sha512-zROvmrRPKqND0e0Bt/wSY+d8iYtL4+sP9mORyjT/ySBiIDfik4iovTjS+L9PFg+zoXfkJ5eBTHK2lX9c7lganw==",
+      "path": "ical.net/5.2.3",
+      "hashPath": "ical.net.5.2.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/1.1.2": {
       "type": "package",

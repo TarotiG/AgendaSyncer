@@ -5,9 +5,9 @@ namespace AgendaSyncer.Core.SyncEngine.Utilities;
 
 public static class HttpHandler
 {
-    public static async Task<string> SendPropFindRequest(HttpClient httpClient, string url)
+    public static async Task<string> SendPropFindRequest(HttpClient httpClient, string url, string user, string password)
     {
-        HttpPropfindRequest request = HttpPropfindRequestFactory.Create(url);
+        HttpPropfindRequest request = HttpPropfindRequestFactory.Create(url, user, password);
         HttpResponseMessage response = await httpClient.SendAsync(request);
         response.EnsureSuccessStatusCode();
         
