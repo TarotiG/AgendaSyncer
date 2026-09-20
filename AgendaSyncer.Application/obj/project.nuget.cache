@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Cx1aBasS+8A=",
+  "dgSpecHash": "wrtQVcMPWzU=",
   "success": true,
   "projectFilePath": "/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Application/AgendaSyncer.Application.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,7 @@
     "/home/tyronlsg/.nuget/packages/google.apis.auth/1.74.0/google.apis.auth.1.74.0.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/google.apis.calendar.v3/1.74.0.4073/google.apis.calendar.v3.1.74.0.4073.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/google.apis.core/1.74.0/google.apis.core.1.74.0.nupkg.sha512",
-    "/home/tyronlsg/.nuget/packages/ical.net/5.2.2/ical.net.5.2.2.nupkg.sha512",
+    "/home/tyronlsg/.nuget/packages/ical.net/5.2.3/ical.net.5.2.3.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/nodatime/3.2.2/nodatime.3.2.2.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/serilog/4.4.1-dev-02447/serilog.4.4.1-dev-02447.nupkg.sha512",

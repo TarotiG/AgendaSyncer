@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5+C4ac5RoH4=",
+  "dgSpecHash": "7kg0xxqFOb4=",
   "success": true,
   "projectFilePath": "/home/tyronlsg/RiderProjects/AgendaSyncer/AgendaSyncer.Test/AgendaSyncer.Test.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,7 @@
     "/home/tyronlsg/.nuget/packages/google.apis.auth/1.74.0/google.apis.auth.1.74.0.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/google.apis.calendar.v3/1.74.0.4073/google.apis.calendar.v3.1.74.0.4073.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/google.apis.core/1.74.0/google.apis.core.1.74.0.nupkg.sha512",
-    "/home/tyronlsg/.nuget/packages/ical.net/5.2.2/ical.net.5.2.2.nupkg.sha512",
+    "/home/tyronlsg/.nuget/packages/ical.net/5.2.3/ical.net.5.2.3.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/microsoft.codecoverage/17.14.1/microsoft.codecoverage.17.14.1.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/microsoft.extensions.configuration/1.1.2/microsoft.extensions.configuration.1.1.2.nupkg.sha512",
     "/home/tyronlsg/.nuget/packages/microsoft.extensions.configuration.abstractions/1.1.2/microsoft.extensions.configuration.abstractions.1.1.2.nupkg.sha512",

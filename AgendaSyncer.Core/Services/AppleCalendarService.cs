@@ -1,16 +1,16 @@
-using AgendaSyncer.Core.Interfaces;
+using AgendaSyncer.Core.Abstractions;
 
 namespace AgendaSyncer.Core.Services;
 
-public class AppleCalendarService : IAppleCalendarService
+public class AppleCalendarService : CalendarServiceBase<object>
 {
-    public void CreateConnection()
+    public override object CreateConnection()
     {
-        
+        throw new NotImplementedException();
     }
     
-    public void GetEvents()
+    public override void CreateEvent()
     {
-        
+        throw new NotImplementedException();
     }
 }

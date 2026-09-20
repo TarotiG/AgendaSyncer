@@ -1,15 +1,16 @@
 using AgendaSyncer.Core.Exceptions;
 using AgendaSyncer.Core.Interfaces;
-using AgendaSyncer.Core.SyncEngine.Models;
+using AgendaSyncer.Core.SyncEngine.Mappers;
+using AgendaSyncer.Core.SyncEngine.Models.Syncer;
 
 namespace AgendaSyncer.Core.Services;
 
 public class SyncEngineService
 {
-    private readonly IGoogleCalendarService _googleCalendarService = new GoogleCalendarService();
-    private readonly IAppleCalendarService _appleCalendarService = new AppleCalendarService();
+    private readonly ICalendarService<CalendarService> _googleCalendarService = new GoogleCalendarService();
+    private readonly ICalendarService<object> _appleCalendarService = new AppleCalendarService();
     
-    private CalendarService _googleCalendar;
+    private readonly CalendarService _googleCalendar;
     
     
     public SyncEngineService()
@@ -19,13 +20,34 @@ public class SyncEngineService
     
     #region SyncEngine
 
-    private SyncEventEntity TransformEvent<TEvent>()
+    private SyncEventDto TransformEvent<TEvent>(object eventObject)
     {
-        return new SyncEventEntity();
+        if (eventObject is not TEvent)
+        {
+            throw new SyncEventExeption("Given object is an invalid Event Type");
+        }
+
+        var mappedEvent = eventObject switch
+        {
+            Event googleEvent => EventMapper.MapGoogleEventToSyncEvent(googleEvent),
+            _ => throw new SyncEventExeption("Failed to map event to SyncEventEntity.")
+        };
+
+        return mappedEvent;
     }
     
     public void SyncEvents()
     {
+    }
+    
+    private void SendEventsToGoogle()
+    {
+        throw new NotImplementedException();
+    }
+    
+    private void SendEventsToApple()
+    {
+        throw new NotImplementedException();
     }
 
     #endregion
@@ -37,9 +59,9 @@ public class SyncEngineService
         return _googleCalendarService.CreateConnection();
     }
 
-    public List<SyncEventEntity> MapGoogleEvents()
+    public List<SyncEventDto> MapGoogleEvents()
     {
-        List<SyncEventEntity> syncEvents = new();
+        List<SyncEventDto> syncEvents = new List<SyncEventDto>();
         
         try
         {
@@ -49,15 +71,15 @@ public class SyncEngineService
             Log.Information("Mapping Google Calendar Events to SyncEngine Events");
             foreach (var googleEvent in googleEvents)
             {
-                SyncEventEntity syncEvent = TransformEvent<Event>();
+                SyncEventDto syncEvent = TransformEvent<Event>(googleEvent);
                 syncEvents.Add(syncEvent);
             }
 
             return syncEvents;
         }
-        catch (SyncEventExeption ex)
+        catch (EventMapperException ex)
         {
-            throw new SyncEventExeption("Unable to map Google Events to Sync Events", ex);
+            throw new EventMapperException("Unable to map Google Events to Sync Events", ex);
         }
     }
 

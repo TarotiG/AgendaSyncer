@@ -1,8 +1,9 @@
+using AgendaSyncer.Core.Interfaces;
+
 namespace AgendaSyncer.Core.Abstractions;
 
-public abstract class CalendarServiceBase
+public abstract class CalendarServiceBase<TConnection> : ICalendarService<TConnection>
 {
-    public abstract void CreateConnection();
-    
-    public abstract void GetEvents();
+    public abstract TConnection CreateConnection();
+    public abstract void CreateEvent();
 }

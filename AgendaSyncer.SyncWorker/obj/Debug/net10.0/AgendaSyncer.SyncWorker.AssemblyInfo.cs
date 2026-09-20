@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgendaSyncer.SyncWorker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58bf899f8eabb42736efa0dd24b88431a188e0c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39401e8f4c91640ed22c1e15b4095fd14e46f867")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgendaSyncer.SyncWorker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgendaSyncer.SyncWorker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

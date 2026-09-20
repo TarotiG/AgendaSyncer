@@ -1,13 +1,13 @@
+using AgendaSyncer.Core.Abstractions;
 using AgendaSyncer.Core.Exceptions;
-using AgendaSyncer.Core.Interfaces;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 
 namespace AgendaSyncer.Core.Services;
 
-public class GoogleCalendarService : IGoogleCalendarService
+public class GoogleCalendarService : CalendarServiceBase<CalendarService>
 {
-    public CalendarService CreateConnection()
+    public override CalendarService CreateConnection()
     {
         try
         {
@@ -25,6 +25,11 @@ public class GoogleCalendarService : IGoogleCalendarService
         {
             throw new CalendarConnectionException("Unable to connect to Google Calendar", e);
         }
+    }
+    
+    public override void CreateEvent()
+    {
+        throw new NotImplementedException();
     }
     
     #region Helper Methods

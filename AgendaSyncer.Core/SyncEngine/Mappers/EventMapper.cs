@@ -1,8 +1,32 @@
+using AgendaSyncer.Core.SyncEngine.Models;
+using AgendaSyncer.Core.SyncEngine.Models.Syncer;
+
 namespace AgendaSyncer.Core.SyncEngine.Mappers;
 
 public static class EventMapper
 {
     #region Google EventMapper
+
+    public static SyncEventDto MapGoogleEventToSyncEvent(Event googleEvent)
+    {
+        SyncEventEntity syncEvent = new SyncEventEntity
+        {
+            Id = googleEvent.Id,
+            Title = googleEvent.Summary,
+            Description = googleEvent.Description,
+            Created = googleEvent.CreatedDateTimeOffset,
+            Updated = googleEvent.UpdatedDateTimeOffset,
+            StartDateTime = googleEvent.Start,
+            EndDateTime = googleEvent.End,
+            Location = googleEvent.Location,
+            ICalUID = googleEvent.ICalUID,
+            // Attachments = googleEvent.Attachments
+        };
+
+
+        return syncEvent.ToSyncEventDto();
+    }
+
 //     public static List<SyncEventDto> mapGoogleEventsToSyncEventDto(List<Event> googleEvents)
 //     {
 //         ArrayList<SyncEventDto> syncEventDtoList = new ArrayList<>();

@@ -2,7 +2,7 @@ using AgendaSyncer.Core.SyncEngine.Enums;
 using Google.Apis.Calendar.v3.Data;
 using Ical.Net.DataTypes;
 
-namespace AgendaSyncer.Core.SyncEngine.Models;
+namespace AgendaSyncer.Core.SyncEngine.Models.Syncer;
 
 /// <summary>
 /// Record om events te maken naar een calendar
@@ -20,12 +20,12 @@ public record SyncEventDto()
      public string Recurrence { get; init; }
      public string OrganizerEmail { get; init; }
      public List<Attendee> Attendees { get; init; }
-     // public Visibility Visibility { get; init; }
+     // public Visibility EventVisibility { get; init; }
      public string Sequence { get; init; }
      public DateTime Created { get; init; }
      public DateTime Updated { get; init; }
-     // public Status Status { get; init; }
-     public string CalUID { get; init; }
+     // public Status EventStatus { get; init; }
+     public string ICalUID { get; init; }
      public List<Attachment> Attachments { get; init; }
      private CalendarType EventOrigin { get; init; }
 }

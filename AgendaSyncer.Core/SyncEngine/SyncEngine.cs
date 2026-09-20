@@ -1,5 +1,5 @@
 using AgendaSyncer.Core.Services;
-using AgendaSyncer.Core.SyncEngine.Models;
+using AgendaSyncer.Core.SyncEngine.Models.Syncer;
 using Google.Apis.Http;
 
 namespace AgendaSyncer.Core.SyncEngine;
@@ -13,7 +13,8 @@ public class SyncEngine
     public static void ConnectToCalendars()
     {
         SyncEngineService syncEngineService = new();
-        syncEngineService.MapGoogleEvents();
+        List<SyncEventDto> syncEvents = syncEngineService.MapGoogleEvents();
+        
     }
     
     public static void SyncCalendars()

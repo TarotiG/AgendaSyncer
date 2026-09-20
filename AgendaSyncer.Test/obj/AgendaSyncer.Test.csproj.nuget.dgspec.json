@@ -59,7 +59,7 @@
             },
             "Ical.Net": {
               "target": "Package",
-              "version": "[5.2.2, )"
+              "version": "[5.2.3, )"
             },
             "Serilog": {
               "target": "Package",
