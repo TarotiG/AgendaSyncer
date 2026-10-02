@@ -8,7 +8,7 @@ namespace AgendaSyncer.Core.Services;
 public class SyncEngineService
 {
     private readonly ICalendarService<CalendarService> _googleCalendarService = new GoogleCalendarService();
-    private readonly ICalendarService<string> _appleCalendarService = new AppleCalendarService();
+    private readonly ICalendarService<HttpResponseMessage> _appleCalendarService = new AppleCalendarService();
     
     private readonly CalendarService _googleCalendar;
     
@@ -88,8 +88,8 @@ public class SyncEngineService
     #region Apple
     public void CreateConnectionToApple()
     {
-        string response = _appleCalendarService.CreateConnection();
-        Log.Information("Apple Calendar Connection Response: {response}", response);
+        HttpResponseMessage response = _appleCalendarService.CreateConnection();
+        Log.Information("Apple Calendar Connection Response: {response}", response.Content.ReadAsStringAsync().Result);
     }
 
     public void GetAppleEvents()

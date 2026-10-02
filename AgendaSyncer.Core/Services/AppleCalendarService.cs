@@ -1,11 +1,12 @@
+using System.Net;
 using AgendaSyncer.Core.Abstractions;
 using AgendaSyncer.Core.SyncEngine.Clients.AppleClient;
 
 namespace AgendaSyncer.Core.Services;
 
-public class AppleCalendarService : CalendarServiceBase<string>
+public class AppleCalendarService : CalendarServiceBase<HttpResponseMessage>
 {
-    public override string CreateConnection()
+    public override HttpResponseMessage CreateConnection()
     {
         AppleCalendarClient client = new AppleCalendarClient();
         return client.RetrieveCalendar().GetAwaiter().GetResult();

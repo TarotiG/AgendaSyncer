@@ -1,10 +1,12 @@
+using System.Net.Http.Headers;
+
 namespace AgendaSyncer.Core.SyncEngine.Utilities;
 
 public static class HttpReportRequestFactory
 {
-    public static HttpReportRequest Create(string url)
+    public static HttpReportRequest Create(string url, string user, string password)
     {
-      var request = new HttpReportRequest(url);
+      var request = new HttpReportRequest(url, user, password);
       request.Headers.Add("Depth", "1");
       return request;
     }
@@ -30,8 +32,15 @@ public class HttpReportRequest : HttpRequestMessage
                               </c:calendar-query>
                               """;
     
-    internal HttpReportRequest(string url) : base(Report, url)
+    internal HttpReportRequest(string url, string user, string password) : base(Report, url)
     {
       Content = new StringContent(_payload, Encoding.UTF8, "application/xml");
+      Headers.Authorization = CreateBasicAuthenticationHeaderValue("username", "password");
+    }
+    
+    private static AuthenticationHeaderValue CreateBasicAuthenticationHeaderValue(string user, string password)
+    {
+      string encodedCredentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{user}:{password}"));
+      return new AuthenticationHeaderValue("Basic", encodedCredentials);
     }
 }

@@ -9,12 +9,23 @@ public class AppleCalendarClient
         SecretsConfig.Load();
     }
     
-    public async Task<string> RetrieveCalendar()
+    public async Task<HttpResponseMessage> RetrieveCalendar()
+    {
+        using HttpClient httpClient = new HttpClient();
+        return await HttpHandler.SendReportRequest(
+            httpClient,
+            Environment.GetEnvironmentVariable("APPLE_CALDAV_URL")!,
+            Environment.GetEnvironmentVariable("APPLE_USER")!,
+            Environment.GetEnvironmentVariable("APPLE_SPEC_PW")!
+            );
+    }
+    
+    public async Task<HttpResponseMessage> PerformPropFindRequest()
     {
         using HttpClient httpClient = new HttpClient();
         return await HttpHandler.SendPropFindRequest(
             httpClient,
-            Environment.GetEnvironmentVariable("APPLE_PROPFIND_URL")!,
+            Environment.GetEnvironmentVariable("APPLE_CALDAV_URL")!,
             Environment.GetEnvironmentVariable("APPLE_USER")!,
             Environment.GetEnvironmentVariable("APPLE_SPEC_PW")!
             );

@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using DotNetEnv;
 
 namespace AgendaSyncer.Core.SyncEngine.Utilities;
@@ -6,11 +7,10 @@ public static class HttpPropfindRequestFactory
 {
     public static HttpPropfindRequest Create(string url, string user, string password)
     {
-        var request = new HttpPropfindRequest(url);
-        request.SetAuthentication(user, password);
+        var request = new HttpPropfindRequest(url, user, password);
         
-        request.Headers.Add("Depth", "0");
-        request.Headers.Add("Authorization", request.Authentication);
+        request.Headers.Add("Accept", "application/xml; charset=utf-8");
+        request.Headers.Add("Depth", "1");
         return request;
     }
 }
@@ -26,19 +26,20 @@ public class HttpPropfindRequest : HttpRequestMessage
                                  <d:resourcetype/>
                                  <d:current-user-privilege-set/>
                                </d:prop>
+                             </d:propfind> 
                              """;
     
-    internal string Authentication;
     
-    
-    internal HttpPropfindRequest(string url) : base(Propfind, url)
+    internal HttpPropfindRequest(string url, string user, string password) : base(Propfind, url)
     {
         Content = new StringContent(_payload, Encoding.UTF8, "application/xml");
+        Headers.Authorization = CreateBasicAuthenticationHeaderValue(user, password);
     }
 
-    internal void SetAuthentication(string user, string password)
+    private static AuthenticationHeaderValue CreateBasicAuthenticationHeaderValue(string user, string password)
     {
-        Authentication = $"Basic {Convert.ToBase64String(Encoding.ASCII.GetBytes($"{user}:{password}"))}";
+        string encodedCredentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{user}:{password}"));
+        return new AuthenticationHeaderValue("Basic", encodedCredentials);
     }
 
 }
