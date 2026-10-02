@@ -15,7 +15,10 @@ public static class HttpHandler
 
     public static async Task<HttpResponseMessage> SendReportRequest(HttpClient httpClient, string url, string user, string password)
     {
-        HttpReportRequest request = HttpReportRequestFactory.Create(url, user, password);
+        DateTimeOffset start = DateTimeOffset.Now.AddMonths(-1);
+        DateTimeOffset end = DateTimeOffset.Now.AddMonths(3);
+        
+        HttpReportRequest request = HttpReportRequestFactory.Create(url, user, password, start, end);
         HttpResponseMessage response = await httpClient.SendAsync(request);
         response.EnsureSuccessStatusCode();
         

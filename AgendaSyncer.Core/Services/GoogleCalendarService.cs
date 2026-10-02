@@ -5,8 +5,14 @@ using Google.Apis.Services;
 
 namespace AgendaSyncer.Core.Services;
 
-public class GoogleCalendarService : CalendarServiceBase<CalendarService>
+public class GoogleCalendarService : CalendarServiceBase<CalendarService, IList<Event>>
 {
+    private CalendarService calendarService => CreateConnection();
+    
+    public GoogleCalendarService()
+    {
+    }
+    
     public override CalendarService CreateConnection()
     {
         try
@@ -25,6 +31,11 @@ public class GoogleCalendarService : CalendarServiceBase<CalendarService>
         {
             throw new CalendarConnectionException("Unable to connect to Google Calendar", e);
         }
+    }
+    
+    public override IList<Event> GetEvents(CalendarService calendarService)
+    {
+        return  calendarService.Events.List("primary").Execute().Items;
     }
     
     public override void CreateEvent()

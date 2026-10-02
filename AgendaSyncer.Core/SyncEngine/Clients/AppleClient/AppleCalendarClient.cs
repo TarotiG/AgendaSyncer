@@ -20,7 +20,7 @@ public class AppleCalendarClient
             );
     }
     
-    public async Task<HttpResponseMessage> PerformPropFindRequest()
+    public async Task<HttpResponseMessage> ValidateConnection()
     {
         using HttpClient httpClient = new HttpClient();
         return await HttpHandler.SendPropFindRequest(

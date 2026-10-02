@@ -7,15 +7,13 @@ namespace AgendaSyncer.Core.Services;
 
 public class SyncEngineService
 {
-    private readonly ICalendarService<CalendarService> _googleCalendarService = new GoogleCalendarService();
-    private readonly ICalendarService<HttpResponseMessage> _appleCalendarService = new AppleCalendarService();
-    
-    private readonly CalendarService _googleCalendar;
+    private readonly ICalendarService<CalendarService, IList<Event>> _googleCalendarService = new GoogleCalendarService();
+    private readonly ICalendarService<HttpResponseMessage, HttpResponseMessage> _appleCalendarService = new AppleCalendarService();
+
     
     
     public SyncEngineService()
     {
-        _googleCalendar = CreateConnectionToGoogle();
     }
     
     #region SyncEngine
@@ -61,12 +59,13 @@ public class SyncEngineService
 
     public List<SyncEventDto> MapGoogleEvents()
     {
+        CalendarService googleCalendar = CreateConnectionToGoogle();
         List<SyncEventDto> syncEvents = new List<SyncEventDto>();
         
         try
         {
             Log.Information("Retrieving Google Calendar Events");
-            var googleEvents = _googleCalendar.Events.List("primary").Execute().Items;
+            var googleEvents = _googleCalendarService.GetEvents(googleCalendar);
             
             Log.Information("Mapping Google Calendar Events to SyncEngine Events");
             foreach (var googleEvent in googleEvents)
@@ -89,11 +88,12 @@ public class SyncEngineService
     public void CreateConnectionToApple()
     {
         HttpResponseMessage response = _appleCalendarService.CreateConnection();
-        Log.Information("Apple Calendar Connection Response: {response}", response.Content.ReadAsStringAsync().Result);
+        Log.Information("Apple Calendar Connection Response: {response}", response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
     }
 
     public void GetAppleEvents()
     {
+        
     }
     
     #endregion
