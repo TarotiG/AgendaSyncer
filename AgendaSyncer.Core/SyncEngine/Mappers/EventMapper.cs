@@ -101,6 +101,17 @@ public static class EventMapper
     #endregion
     
     #region Apple EventMapper
+    // public static SyncEventDto MapAppleEventToSyncEventDto(VEvent event)
+    // {
+    //     SyncEventEntity syncEvent = new SyncEventEntity
+    //     {
+    //         
+    //     };
+    //     
+    //     return syncEvent.ToSyncEventDto();
+    // }
+    
+
     //     public void getVEventSummary(VEvent event) {
     //         this.title = event.getSummary().getValue();
     //     }

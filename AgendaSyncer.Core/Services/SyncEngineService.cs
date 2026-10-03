@@ -2,6 +2,8 @@ using AgendaSyncer.Core.Exceptions;
 using AgendaSyncer.Core.Interfaces;
 using AgendaSyncer.Core.SyncEngine.Mappers;
 using AgendaSyncer.Core.SyncEngine.Models.Syncer;
+using AgendaSyncer.Core.SyncEngine.Utilities;
+using Ical.Net.CalendarComponents;
 
 namespace AgendaSyncer.Core.Services;
 
@@ -85,15 +87,34 @@ public class SyncEngineService
     #endregion
     
     #region Apple
-    public void CreateConnectionToApple()
+    public HttpResponseMessage CreateConnectionToApple()
     {
-        HttpResponseMessage response = _appleCalendarService.CreateConnection();
-        Log.Information("Apple Calendar Connection Response: {response}", response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+        return _appleCalendarService.CreateConnection();
     }
 
-    public void GetAppleEvents()
+    public List<CalendarEvent> GetAppleEvents()
     {
+        List<CalendarEvent> appleEvents = new();
         
+        Log.Information("Retrieving Apple Calendar Events");
+        
+        // TODO: Onderstaande logica verplaatsen naar AppleCalendarService
+        HttpResponseMessage appleConnection = CreateConnectionToApple();
+        string events = _appleCalendarService.GetEvents(appleConnection)
+            .Content
+            .ReadAsStringAsync()
+            .GetAwaiter()
+            .GetResult();
+        
+        IEnumerable<string> appleCalendars = AppleResponseParser.ParseToCalendars(events);
+
+        foreach (string calendar in appleCalendars)
+        {
+            CalendarEvent appleEvent = AppleResponseParser.DeserializeToAppleEvent(calendar);
+            appleEvents.Add(appleEvent);
+        }
+
+        return appleEvents;
     }
     
     #endregion

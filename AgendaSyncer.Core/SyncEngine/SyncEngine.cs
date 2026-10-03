@@ -15,7 +15,12 @@ public class SyncEngine
         SyncEngineService syncEngineService = new();
         // List<SyncEventDto> syncEvents = syncEngineService.MapGoogleEvents();
         
-        syncEngineService.CreateConnectionToApple();
+        var appleEvents = syncEngineService.GetAppleEvents();
+
+        foreach (var appleEvent in appleEvents)
+        {
+            Log.Information("Apple Event: {Event}", appleEvent.Summary);
+        }
     }
     
     public static void SyncCalendars()
