@@ -35,13 +35,86 @@ public class GoogleCalendarService : CalendarServiceBase<CalendarService, IList<
     
     public override IList<Event> GetEvents(CalendarService calendarService)
     {
-        return  calendarService.Events.List("primary").Execute().Items;
+        var request = calendarService.Events.List("primary");
+        
+        request.TimeMinDateTimeOffset = DateTimeOffset.UtcNow;
+        request.TimeMaxDateTimeOffset = DateTimeOffset.UtcNow.AddMonths(1);
+        request.SingleEvents = true;
+        request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
+        
+        return  request.Execute().Items;
     }
     
     public override void CreateEvent()
     {
         throw new NotImplementedException();
     }
+
+    // public async Task<int> DeleteSyncedEventsAsync(CalendarService service, string calendarId, bool dryRun = true)
+    // {
+    //     string? pageToken = null;
+    //     int matched = 0, deleted = 0;
+    //
+    //     do
+    //     {
+    //         var request = service.Events.List(calendarId);
+    //         request.ShowDeleted = false;      // al verwijderde events hoef je niet opnieuw te verwijderen
+    //         request.SingleEvents = false;     // terugkerende reeksen als één event; verwijder je de reeks, dan gaan de instanties mee
+    //         request.MaxResults = 250;
+    //         request.PageToken = pageToken;
+    //
+    //         var response = await request.ExecuteAsync();
+    //
+    //         foreach (var ev in response.Items ?? Enumerable.Empty<Event>())
+    //         {
+    //             var syncId = ev.ExtendedProperties?.Private__?.GetValueOrDefault("syncId");
+    //             if (syncId == null) continue;
+    //
+    //             // Optioneel strenger: alleen events die jouw syncer heeft gemaakt
+    //             // if (!syncId.StartsWith("apple_")) continue;
+    //
+    //             matched++;
+    //             Console.WriteLine($"{(dryRun ? "[DRY RUN] " : "")}Delete {ev.Id} | {ev.Summary} | {ev.Start?.DateTimeRaw ?? ev.Start?.Date} | {syncId}");
+    //
+    //             if (!dryRun)
+    //             {
+    //                 await DeleteWithRetryAsync(service, calendarId, ev.Id);
+    //                 deleted++;
+    //             }
+    //         }
+    //
+    //         pageToken = response.NextPageToken;
+    //     } while (pageToken != null);
+    //
+    //     Console.WriteLine($"Gevonden: {matched}, verwijderd: {deleted}");
+    //     return deleted;
+    // }
+    //
+    // private static async Task DeleteWithRetryAsync(CalendarService service, string calendarId, string eventId)
+    // {
+    //     for (int attempt = 0; attempt < 5; attempt++)
+    //     {
+    //         try
+    //         {
+    //             await service.Events.Delete(calendarId, eventId).ExecuteAsync();
+    //             await Task.Delay(100); // ruim onder de rate limits blijven
+    //             return;
+    //         }
+    //         catch (Google.GoogleApiException ex) when (
+    //             ex.HttpStatusCode == System.Net.HttpStatusCode.Gone ||
+    //             ex.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+    //         {
+    //             return; // bestond al niet meer
+    //         }
+    //         catch (Google.GoogleApiException ex) when (
+    //             ex.HttpStatusCode == (System.Net.HttpStatusCode)429 ||
+    //             ex.HttpStatusCode == System.Net.HttpStatusCode.Forbidden) // rateLimitExceeded
+    //         {
+    //             await Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, attempt)));
+    //         }
+    //     }
+    //     throw new Exception($"Verwijderen van {eventId} mislukt na meerdere pogingen");
+    // }
     
     #region Helper Methods
 

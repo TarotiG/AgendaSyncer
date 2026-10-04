@@ -1,5 +1,7 @@
 using AgendaSyncer.Core.SyncEngine.Models;
 using AgendaSyncer.Core.SyncEngine.Models.Syncer;
+using Ical.Net.CalendarComponents;
+using Ical.Net.DataTypes;
 
 namespace AgendaSyncer.Core.SyncEngine.Mappers;
 
@@ -101,16 +103,49 @@ public static class EventMapper
     #endregion
     
     #region Apple EventMapper
-    // public static SyncEventDto MapAppleEventToSyncEventDto(VEvent event)
-    // {
-    //     SyncEventEntity syncEvent = new SyncEventEntity
-    //     {
-    //         
-    //     };
-    //     
-    //     return syncEvent.ToSyncEventDto();
-    // }
-    
+    public static SyncEventDto MapAppleEventToSyncEventDto(CalendarEvent appleEvent)
+    {
+        SyncEventEntity syncEvent = new SyncEventEntity
+        {
+            Id = appleEvent.Uid,
+            Title = appleEvent.Summary,
+            Description = appleEvent.Description,
+            Location = appleEvent.Location,
+            StartDateTime = ToEventDateTime(appleEvent.DtStart),
+            EndDateTime = ToEventDateTime(appleEvent.DtEnd!),
+            TimeZone = ToDateTime(appleEvent.DtStamp),
+            // Recurrence = appleEvent.RecurrenceDates,
+            // OrganizerEmail = appleEvent.Organizer.ToString(),
+            Attendees = appleEvent.Attendees.ToList(),
+            Created = ToDateTimeOffset(appleEvent.Created),
+            Updated = ToDateTimeOffset(appleEvent.LastModified),
+            ICalUID = appleEvent.Uid!,
+            Attachments = appleEvent.Attachments.ToList()
+        };
+        
+        return syncEvent.ToSyncEventDto();
+    }
+
+    private static EventDateTime ToEventDateTime(CalDateTime calDateTime)
+    {
+        DateTimeOffset dateTime = ToDateTimeOffset(calDateTime);
+
+        return new EventDateTime
+        {
+            DateTimeDateTimeOffset = dateTime,
+            TimeZone = calDateTime.TzId
+        };
+    }
+
+    private static DateTime ToDateTime(CalDateTime calDateTime)
+    {
+        return calDateTime.Value;
+    }
+
+    private static DateTimeOffset ToDateTimeOffset(CalDateTime calDateTime)
+    {
+        return new DateTimeOffset(calDateTime.Value);
+    }
 
     //     public void getVEventSummary(VEvent event) {
     //         this.title = event.getSummary().getValue();

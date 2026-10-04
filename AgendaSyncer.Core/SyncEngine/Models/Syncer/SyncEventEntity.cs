@@ -7,7 +7,7 @@ namespace AgendaSyncer.Core.SyncEngine.Models.Syncer;
 public class SyncEventEntity
 {
     public string Id { get; set; }
-    public string SyncId { get; set; }
+    public Guid SyncId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public string Location { get; set; }
@@ -15,7 +15,7 @@ public class SyncEventEntity
     public EventDateTime EndDateTime { get; set; }
     public DateTime TimeZone { get; set; }
     public string Recurrence { get; set; }
-    public string OrganizerEmail { get; set; }
+    public string? OrganizerEmail { get; set; }
     public List<Attendee> Attendees { get; set; }
     // public Visibility EventVisibility { get; set; }
     public string Sequence { get; set; }
@@ -31,7 +31,7 @@ public class SyncEventEntity
     }
     
     public SyncEventEntity(string id,
-                            string syncId,
+                            Guid syncId,
                             string title,
                             string description,
                             string location,
